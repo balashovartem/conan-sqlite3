@@ -6,7 +6,7 @@ from copy import copy
 
 if __name__ == "__main__":
     channel = os.getenv("CONAN_CHANNEL", "testing")
-    username = os.getenv("CONAN_USERNAME", "lasote")
+    username = os.getenv("CONAN_USERNAME", "balashovartem")
     current_page = os.getenv("CONAN_CURRENT_PAGE", "1")
     total_pages = os.getenv("CONAN_TOTAL_PAGES", "1")
     gcc_versions = os.getenv("CONAN_GCC_VERSIONS", None)

@@ -9,9 +9,11 @@ class SQLite3Conan(ConanFile):
     license = "Public domain"
     settings = "os", "compiler", "arch", "build_type"
     generators = "cmake"
-    url="http://github.com/rdeterre/conan-sqlite3"
+    url="http://github.com/balashovartem/conan-sqlite3"
     exports = ["CMakeLists.txt"]
     ZIP_FOLDER_NAME = "sqlite-amalgamation-3140100"
+    options = {"shared": [True, False] }
+    default_options = '''shared=False'''
 
     def source(self):
         zip_name = "sqlite-amalgamation-3140100.zip"
@@ -23,8 +25,9 @@ class SQLite3Conan(ConanFile):
     def build(self):
         shutil.move("CMakeLists.txt", "%s/CMakeLists.txt" % self.ZIP_FOLDER_NAME)
         cmake = CMake(self.settings)
+        args = ["-DBUILD_SHARED_LIBS=ON"  if self.options.shared else "-DBUILD_SHARED_LIBS=OFF"]
         self.run("mkdir _build")
-        self.run('cd _build && cmake ../%s %s' % (self.ZIP_FOLDER_NAME, cmake.command_line))
+        self.run('cd _build && cmake ../%s %s %s' % (self.ZIP_FOLDER_NAME, cmake.command_line, ' '.join( args ) ) )
         self.run("cd _build && cmake --build . %s" % cmake.build_config)
 
     def package(self):

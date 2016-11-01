@@ -4,10 +4,10 @@ services:
   - docker
 env:
  global:
-   - CONAN_UPLOAD: 1
-   - CONAN_REFERENCE: "sqlite3/3.10.2"
-   - CONAN_USERNAME: "TyRoXx"
-   - CONAN_CHANNEL: "ci"
+   - CONAN_UPLOAD: 0
+   - CONAN_REFERENCE: "sqlite3/3.14.1"
+   - CONAN_USERNAME: "balashovartem"
+   - CONAN_CHANNEL: "testing"
    - CONAN_TOTAL_PAGES: 4
    - CONAN_USE_DOCKER: 1
  matrix:
