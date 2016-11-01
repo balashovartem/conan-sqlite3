@@ -33,6 +33,7 @@ class SQLite3Conan(ConanFile):
     def package(self):
         self.copy("*.h", "include", "%s" % (self.ZIP_FOLDER_NAME), keep_path=False)
         self.copy(pattern="*.a", dst="lib", src="_build", keep_path=False)
+        self.copy(pattern="*.so", dst="lib", src="_build", keep_path=False)
         self.copy(pattern="*.lib", dst="lib", src="_build", keep_path=False)
         self.copy(pattern="*.pdb", dst="lib", src="_build", keep_path=False)
 
